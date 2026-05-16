@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Registration Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">ComplaintPortal</div>
+            <nav id="nav-menu">
+                <!-- Navigation links will be injected dynamically -->
+            </nav>
+        </header>
+
+        <main id="main-content">
+            <!-- Alert Container -->
+            <div id="alert-container"></div>
+
+            <!-- Views -->
+            <div id="view-register" class="view hidden">
+                <div class="glass-card">
+                    <h2>Register</h2>
+                    
+                    <div id="register-step-1">
+                        <form id="form-send-otp">
+                            <div class="input-group">
+                                <label for="reg-name">Full Name</label>
+                                <input type="text" id="reg-name" required placeholder="John Doe">
+                            </div>
+                            <div class="input-group">
+                                <label for="reg-email">Email Address</label>
+                                <input type="email" id="reg-email" required placeholder="john@example.com">
+                            </div>
+                            <button type="submit" class="btn primary-btn">Send OTP</button>
+                        </form>
+                    </div>
+
+                    <div id="register-step-2" class="hidden">
+                        <form id="form-verify-otp">
+                            <div class="input-group">
+                                <label for="reg-otp">Enter OTP</label>
+                                <input type="text" id="reg-otp" required placeholder="123456">
+                            </div>
+                            <div class="input-group">
+                                <label for="reg-password">Password</label>
+                                <input type="password" id="reg-password" required placeholder="Create a password">
+                            </div>
+                            <div class="input-group">
+                                <label for="reg-confirm-password">Confirm Password</label>
+                                <input type="password" id="reg-confirm-password" required placeholder="Confirm password">
+                            </div>
+                            <button type="submit" class="btn primary-btn">Complete Registration</button>
+                        </form>
+                    </div>
+                    
+                    <p class="switch-view">Already have an account? <a href="#" data-route="login">Login here</a></p>
+                </div>
+            </div>
+
+            <div id="view-login" class="view hidden">
+                <div class="glass-card">
+                    <h2>Login</h2>
+                    <form id="form-login">
+                        <div class="input-group">
+                            <label for="login-email">Email Address</label>
+                            <input type="email" id="login-email" required placeholder="john@example.com">
+                        </div>
+                        <div class="input-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" required placeholder="Your password">
+                        </div>
+                        <button type="submit" class="btn primary-btn">Login</button>
+                    </form>
+                    <p class="switch-view">Don't have an account? <a href="#" data-route="register">Register here</a></p>
+                </div>
+            </div>
+
+            <div id="view-dashboard" class="view hidden">
+                <div class="dashboard-header">
+                    <h2>My Complaints</h2>
+                    <button class="btn secondary-btn" data-route="submit-complaint">Submit New Complaint</button>
+                </div>
+                <div class="complaints-list" id="user-complaints-list">
+                    <p class="loading">Loading complaints...</p>
+                </div>
+            </div>
+
+            <div id="view-submit-complaint" class="view hidden">
+                <div class="glass-card wide-card">
+                    <h2>Submit a Complaint</h2>
+                    <div id="complaint-step-1">
+                        <form id="form-complaint-text">
+                            <div class="input-group">
+                                <label for="complaint-text">Please describe your issue</label>
+                                <textarea id="complaint-text" rows="5" required placeholder="Enter the details of your complaint here..."></textarea>
+                            </div>
+                            <button type="submit" class="btn primary-btn">Next Step</button>
+                        </form>
+                    </div>
+                    
+                    <div id="complaint-step-2" class="hidden">
+                        <div class="ai-box">
+                            <h3>Follow-up Question</h3>
+                            <p id="ai-question-display" class="ai-text">Loading question...</p>
+                        </div>
+                        <form id="form-complaint-final">
+                            <div class="input-group">
+                                <label for="user-answer">Your Answer</label>
+                                <textarea id="user-answer" rows="3" required placeholder="Answer the question above..."></textarea>
+                            </div>
+                            <button type="submit" class="btn primary-btn">Submit Complete Complaint</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-admin" class="view hidden">
+                <div class="dashboard-header">
+                    <h2>Admin Dashboard</h2>
+                    <p>All System Complaints</p>
+                </div>
+                <div class="complaints-list" id="admin-complaints-list">
+                    <p class="loading">Loading all complaints...</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
