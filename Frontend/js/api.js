@@ -1,9 +1,9 @@
-const BACKEND_BASE_URL = 'http://localhost:3000';
+const BACKEND_BASE_URL = 'https://complaints-registration-platform-full-fftj.onrender.com';
 const API_BASE_URL = `${BACKEND_BASE_URL}/api`;
 
 const apiFetch = async (endpoint, options = {}) => {
   options.credentials = 'include'; // Include cookies as fallback
-  
+
   const token = localStorage.getItem('token');
   options.headers = {
     'Content-Type': 'application/json',
@@ -14,11 +14,11 @@ const apiFetch = async (endpoint, options = {}) => {
   try {
     const response = await fetch(`${API_BASE_URL}${endpoint}`, options);
     const data = await response.json();
-    
+
     if (!response.ok) {
       throw new Error(data.error || 'Something went wrong');
     }
-    
+
     return data;
   } catch (error) {
     throw error;
